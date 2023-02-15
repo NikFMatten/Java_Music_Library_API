@@ -21,4 +21,8 @@ public class MusicService {
         return musicRepository.findAll();
     }
 
+    public Music getById(Integer id){
+        return musicRepository.findById(id).orElse(null);
+    }
+
 }
