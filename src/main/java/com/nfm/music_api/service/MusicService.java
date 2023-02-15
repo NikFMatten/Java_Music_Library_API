@@ -4,6 +4,7 @@ import com.nfm.music_api.data.Music;
 import com.nfm.music_api.repository.MusicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 
@@ -27,6 +28,32 @@ public class MusicService {
 
     public void deleteById(Integer id){
         musicRepository.deleteById(id);
+    }
+
+    public List<Music> getByName(String name){
+        return musicRepository.findByName(name);
+    }
+
+    public List<Music> getByArtist(String artist){
+        return musicRepository.findByArtist(artist);
+    }
+
+    public List<Music> getByGenre(String genre){
+        return musicRepository.findByGenre(genre);
+    }
+
+    public List<Music> getByYear(Integer year){
+        return musicRepository.findByYear(year);
+    }
+
+    @PutMapping
+    public Music updateById(Music music, Integer id){
+        Music musicToUpdate = musicRepository.findById(id).orElse(null);
+        musicToUpdate.setName(music.getName());
+        musicToUpdate.setArtist(music.getArtist());
+        musicToUpdate.setGenre(music.getGenre());
+        musicToUpdate.setYear(music.getYear());
+        return musicRepository.save(musicToUpdate);
     }
 
 }
