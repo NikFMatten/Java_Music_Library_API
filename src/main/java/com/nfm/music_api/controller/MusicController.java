@@ -27,4 +27,9 @@ public class MusicController {
     public Music findMusicById(@PathVariable Integer id){
         return musicService.getById(id);
     }
+    
+    @DeleteMapping("/deleteById/{id}")
+    public void deleteById(@PathVariable Integer id){
+        musicService.deleteById(id);
+    }
 }

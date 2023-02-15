@@ -25,4 +25,8 @@ public class MusicService {
         return musicRepository.findById(id).orElse(null);
     }
 
+    public void deleteById(Integer id){
+        musicRepository.deleteById(id);
+    }
+
 }
