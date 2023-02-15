@@ -5,6 +5,8 @@ import com.nfm.music_api.repository.MusicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MusicService {
 
@@ -15,6 +17,8 @@ public class MusicService {
         return musicRepository.save(music);
     }
 
-
+    public List<Music> getAllMusic(){
+        return musicRepository.findAll();
+    }
 
 }
